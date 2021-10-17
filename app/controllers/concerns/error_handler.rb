@@ -1,6 +1,8 @@
 module ErrorHandler
+  extend ActiveSupport::Concern
   included do
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found_error  end
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
+  end
 
   def not_found_error
     render json: {
