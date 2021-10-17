@@ -15,8 +15,8 @@ gem 'jwt'
 # Use pg as the database for Active Record
 gem 'pg'
 
-# authentication
-gem "pundit"
+# Authorization
+gem 'pundit'
 
 gem 'pry'
 # Use Puma as the app server
