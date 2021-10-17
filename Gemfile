@@ -5,8 +5,20 @@ ruby '2.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
-# Use sqlite3 as the database for Active Record
+
+# User device for user management
+gem 'devise'
+
+# JWT token
+gem 'jwt'
+
+# Use pg as the database for Active Record
 gem 'pg'
+
+# authentication
+gem "pundit"
+
+gem 'pry'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -18,6 +30,9 @@ gem 'puma', '~> 5.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+
+# cors
+gem 'rack-cors'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
