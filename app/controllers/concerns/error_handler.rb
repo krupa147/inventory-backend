@@ -3,6 +3,7 @@ module ErrorHandler
   included do
     rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized_error
+    rescue_from ActionController::ParameterMissing, with: :param_missing_error
   end
 
   def not_found_error
@@ -17,5 +18,13 @@ module ErrorHandler
       code: 'not_authorized',
       error: 'You are not authorized to perform this action'
     }, status: 403
+  end
+
+  def param_missing_error(exception)
+    render json: {
+      code: 'param_missing',
+      error: 'Missing or Invalid parameter',
+      param: exception.param
+    }, status: 422
   end
 end

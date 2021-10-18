@@ -1,18 +1,18 @@
-class InventoryPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   def create?
-    @user.inventory_manager?
+    user.IT_admin?
   end
 
   def show?
-    @user.inventory_manager?
+    user.IT_admin? || (record.sales_mangager? || user.sales_manager?)
   end
 
   def update?
-    @user.inventory_manager?
+    user.IT_admin?
   end
 
   def destroy?
-    @user.inventory_manager?
+    user.IT_admin?
   end
 
   class Scope
@@ -22,8 +22,10 @@ class InventoryPolicy < ApplicationPolicy
     end
 
     def resolve
-      if user.inventory_manager? || user.sales_manager?
+      if user.IT_admin?
         scope.all
+      elsif user.sales_manager?
+        scope.salas_manager
       else
         scope.none
       end

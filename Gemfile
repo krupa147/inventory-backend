@@ -12,6 +12,9 @@ gem 'devise'
 # JWT token
 gem 'jwt'
 
+# Email
+gem "letter_opener"
+
 # Use pg as the database for Active Record
 gem 'pg'
 
