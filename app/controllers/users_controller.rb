@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < AuthorizedBaseApiController
   before_action :set_user, :authorize_user, only: %i[show update destroy]
   before_action :authorize_create_user, only: :create
@@ -53,7 +55,7 @@ class UsersController < AuthorizedBaseApiController
 
   def role_validation
     unless %w[inventory_manager quality_check_person sales_manager IT_admin].include? user_params[:role]
-      raise ActionController::ParameterMissing.new(:role)
+      raise ActionController::ParameterMissing, :role
     end
   end
 end

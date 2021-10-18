@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InventoryPolicy < ApplicationPolicy
   def create?
     @user.inventory_manager?

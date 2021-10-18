@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Paginator
   extend ActiveSupport::Concern
   def pagination_params
