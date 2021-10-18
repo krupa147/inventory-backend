@@ -4,13 +4,12 @@ class InventoriesController < AuthorizedBaseApiController
 
   def index
     @inventories = policy_scope(Inventory)
-    render json: @inventories
+    paginate json: @inventories, per_page: pagination_params[:per_page], page: pagination_params[:page]
   end
 
   def create
     @inventory = Inventory.create!(
       inventory_params.merge!({
-        company_id: @current_user.company_id,
         created_by_id: @current_user.id
       })
     )
