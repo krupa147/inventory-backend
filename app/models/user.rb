@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable
 
-  belongs_to :company
+  belongs_to :company, optional: true
 
   enum role: {
     'inventory_manager': 0,
