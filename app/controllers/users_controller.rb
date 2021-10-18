@@ -22,7 +22,7 @@ class UsersController < AuthorizedBaseApiController
   end
 
   def update
-    @user.update(user_params)
+    @user.update!(user_params)
     render json: @user
   end
 
