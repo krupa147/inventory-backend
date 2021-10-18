@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InventoriesController < AuthorizedBaseApiController
   before_action :set_inventory, :authorize_user, only: %i[show update destroy update_status]
   before_action :authorize_create_user, only: :create
@@ -10,8 +12,8 @@ class InventoriesController < AuthorizedBaseApiController
   def create
     @inventory = Inventory.create!(
       inventory_params.merge!({
-        created_by_id: @current_user.id
-      })
+                                created_by_id: @current_user.id
+                              })
     )
     render json: @inventory
   end
