@@ -7,4 +7,8 @@ Rails.application.routes.draw do
              controllers: {
                sessions: 'sessions',
              }
+
+  scope :api do
+    resources :inventories
+  end
 end

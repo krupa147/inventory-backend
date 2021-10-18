@@ -12,7 +12,7 @@ module Authenticator
   end
 
   def http_token
-    token = request.headers['Authorization']
+    token = request.headers['Authorization'].split(" ")[1]
     token
   end
 
@@ -21,6 +21,7 @@ module Authenticator
   end
 
   def current_loggedin_user
+    raise JWT::DecodeError if decoded_token.nil?
     User.find_by!(email: decoded_token[:email])
   end
 end
