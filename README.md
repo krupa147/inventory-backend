@@ -1,24 +1,50 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Prequisites:
+* Ruby Version  2.6.2
+* Postgres 14
 
-Things you may want to cover:
+### Setting up
 
-* Ruby version
+#### Bundle
+Install gems with
+```bash
+bundle
+```
 
-* System dependencies
+#### Configuration
+Copy the content of `config/database-sample.yml` and add it to `config/database.yml`. Update username and password with your postgres username and password in `config/database.yml`.
 
-* Configuration
+Add master.key file to `config/master.key`. Ask repository author for master.key
+#### Database Creation & Migration
+Run below command to create the database,
+```azure
+rails db:create 
+```
 
-* Database creation
+Run below command to migrate the database,
+```azure
+rails db:migrate
+```
 
-* Database initialization
+Seed the database with below command,
+```azure
+rails db:seed
+```
 
-* How to run the test suite
+### How to run on localhost
 
-* Services (job queues, cache servers, search engines, etc.)
+Use below command to run rails server
+```azure
+rails s
+```
 
-* Deployment instructions
+### Note
+* Use `rails c` to access the database console
+* `rails db:seed` will create one employee with role IT admin. To access the API use below username and password
+    * username: test@test.com
+    * password: Test@123
+* Postman collection link: [inventory](https://www.getpostman.com/collections/a55100b557ef36ec93af)
 
-* ...
+
+
