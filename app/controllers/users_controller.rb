@@ -5,7 +5,7 @@ class UsersController < AuthorizedBaseApiController
 
   def index
     @users = policy_scope(User)
-    render json: @users
+    paginate json: @users, per_page: pagination_params[:per_page], page: pagination_params[:page]
   end
 
   def create
