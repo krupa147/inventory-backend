@@ -15,6 +15,10 @@ class InventoryPolicy < ApplicationPolicy
     @user.inventory_manager?
   end
 
+  def update_status?
+    @user.quality_check_person?
+  end
+
   class Scope
     def initialize(user, scope)
       @user  = user
