@@ -7,6 +7,8 @@ module ErrorHandler
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_error
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized_error
     rescue_from ActionController::ParameterMissing, with: :param_missing_error
+    rescue_from ActiveRecord::RecordNotSaved, with: :invalid_error
+    rescue_from ActiveRecord::RecordNotDestroyed, with: :invalid_error
   end
 
   private
