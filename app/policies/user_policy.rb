@@ -27,7 +27,7 @@ class UserPolicy < ApplicationPolicy
       if user.IT_admin?
         scope.all
       elsif user.sales_manager?
-        scope.salas_manager
+        scope.sales_manager
       else
         scope.none
       end
