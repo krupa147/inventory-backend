@@ -10,5 +10,8 @@ Rails.application.routes.draw do
 
   scope :api do
     resources :inventories
+    resources :users
+    post :reset_password, to: "passwords#reset"
+    get :forgot_password, to: "passwords#forgot"
   end
 end
