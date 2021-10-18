@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable
 
+  validates :email, presence: true, uniqueness: true
   before_update :raise_role_change_error, if: :IT_admin? && :last_IT_admin?
   before_destroy :raise_role_delete_error, if: :IT_admin? && :last_IT_admin?
 
