@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class InventoriesController < AuthorizedBaseApiController
-  before_action :set_inventory, :authorize_user, only: %i[show update destroy update_status]
-  before_action :authorize_create_user, only: :create
+  before_action :set_inventory, only: %i[show update destroy update_status]
+  before_action :authorize_user, except: :index
 
   def index
     @inventories = policy_scope(Inventory)
@@ -52,10 +52,6 @@ class InventoriesController < AuthorizedBaseApiController
   end
 
   def authorize_user
-    authorize @inventory
-  end
-
-  def authorize_create_user
     authorize Inventory
   end
 end

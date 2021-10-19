@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user.IT_admin? || (record.sales_mangager? || user.sales_manager?)
+    user.IT_admin? || (record.sales_manager? || user.sales_manager?)
   end
 
   def update?

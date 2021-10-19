@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < AuthorizedBaseApiController
-  before_action :set_user, :authorize_user, only: %i[show update destroy]
-  before_action :authorize_create_user, only: :create
+  before_action :authorize_user, except: %i[index show]
+  before_action :set_user, only: %i[show update destroy]
+  before_action :authorize_record, only: :show
   before_action :role_validation, only: %i[create update]
 
   def index
@@ -46,11 +47,11 @@ class UsersController < AuthorizedBaseApiController
   end
 
   def authorize_user
-    authorize @user
+    authorize User
   end
 
-  def authorize_create_user
-    authorize User
+  def authorize_record
+    authorize @user
   end
 
   def role_validation
